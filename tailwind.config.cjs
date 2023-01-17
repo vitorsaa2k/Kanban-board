@@ -17,7 +17,17 @@ module.exports = {
     },
     fontFamily: {
       custom: ['Inter', 'sans-serif']
-    }
+    },
+    animation: {
+      slide: 'slide 0.5s ease-in-out'
+    },
+    keyframes: {
+      slide: {
+        '0%': {transform: 'translate(0, 0)'},
+        '100%': {transform: 'translate(0, 20px)'}
+      }
+    },
+
   },
   plugins: [],
 }

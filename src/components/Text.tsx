@@ -4,8 +4,8 @@ import { clsx } from 'clsx'
 
 interface TextProps {
   children: ReactNode
-  size: "sm" | "lg"
-  className: string
+  size?: "sm" | "lg"
+  className?: string
   asChild?: boolean
 }
 
