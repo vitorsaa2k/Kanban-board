@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Nav } from "../components/nav/Index";
 import { Marker } from "../components/category/Marker";
-import { CheckButton } from "../components/category/Check";
 import { Task } from "../components/category/Task";
 
 
@@ -11,19 +10,26 @@ export function Board() {
   const [sample, setSample] = useState([
     {
       title: 'To do',
+      color: '#0080FE',
       tasks: [
         {
-          task: '',
+          task: 'Center the div',
           isCritical: false,
           isDone: false,
-        }
+        },
+        {
+          task: 'Center the div',
+          isCritical: false,
+          isDone: false,
+        },
       ]
     },
     {
       title: 'Doing',
+      color: '#F08538',
       tasks: [
         {
-          task: '',
+          task: 'Create a new button',
           isCritical: false,
           isDone: false,
         }
@@ -31,9 +37,43 @@ export function Board() {
     },
     {
       title: 'Done',
+      color: '#79A41F',
       tasks: [
         {
-          task: '',
+          task: 'Change the input color',
+          isCritical: false,
+          isDone: false,
+        }
+      ]
+    },
+    {
+      title: 'a',
+      color: '',
+      tasks: [
+        {
+          task: 'Change the input color',
+          isCritical: false,
+          isDone: false,
+        }
+      ]
+    },
+    {
+      title: 'a',
+      color: '',
+      tasks: [
+        {
+          task: 'Change the input color',
+          isCritical: false,
+          isDone: false,
+        }
+      ]
+    },
+    {
+      title: 'a',
+      color: '',
+      tasks: [
+        {
+          task: 'Change the input color',
           isCritical: false,
           isDone: false,
         }
@@ -43,8 +83,8 @@ export function Board() {
 
   const markers = sample.map((marker) => {
     return (
-      <div>
-        <Marker title={marker.title}/>
+      <div className="max-w-[322px]">
+        <Marker color={marker.color} title={marker.title}/>
         <div>
           <div>
             {
@@ -67,7 +107,9 @@ export function Board() {
   return (
     <div>
       <Nav />
-      {markers}
+      <div className="grid grid-cols-3 place-items-center gap-[10px] my-36">
+        {markers}
+      </div>
     </div>
   )
 }

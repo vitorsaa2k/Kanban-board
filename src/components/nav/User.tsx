@@ -8,8 +8,8 @@ import { DropDown } from "./DropDown";
 
 export function User() {
 
-  const [isShowing, setIsShowing] = useState<boolean>(true)
-  const [show, setShow] = useState<boolean>(true)
+  const [isShowing, setIsShowing] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(false)
 
   function flipDropDown() {
     if(isShowing) {

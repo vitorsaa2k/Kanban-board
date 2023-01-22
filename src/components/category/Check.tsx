@@ -11,7 +11,7 @@ interface CheckProps {
 export function CheckButton({isDone, setIsDone}: CheckProps) {
   return (
     <div onClick={() => setIsDone()} className={clsx(
-      'rounded-full w-4 h-4 hover:cursor-pointer',
+      'rounded-full w-5 h-5 hover:cursor-pointer',
       {
         'bg-my-green': isDone == true,
         'border-solid border border-black': isDone == false,

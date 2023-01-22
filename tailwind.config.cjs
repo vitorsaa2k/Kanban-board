@@ -12,6 +12,7 @@ module.exports = {
         "my-blue": "#0080FE",
         "my-orange": "#F08538",
         "my-gray-200": "#E6E6E6",
+        "my-gray-800": "#404040",
         "my-gray-900": "#222222",
       }
     },

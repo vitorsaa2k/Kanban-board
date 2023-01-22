@@ -18,7 +18,8 @@ export function Text({children, size = 'sm', className, asChild}: TextProps) {
       {
         'text-my-sm': size == 'sm',
         'text-my-lg': size == 'lg',
-      }
+      },
+      className
     )}>
       {children}
     </Comp>
