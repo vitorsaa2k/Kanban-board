@@ -19,7 +19,6 @@ export function Marker({title, color}: MarkerProps) {
       return 'bg-my-gray-800'
     }
   }
-  console.log(checkColor)
   return (
     <div className={`flex items-center justify-center relative rounded-lg w-[322px] h-[54px] ${checkColor()}`}>
       <Text size="lg" className="text-white self-center">{title}</Text>
