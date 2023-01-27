@@ -9,7 +9,13 @@ import {
 } from 'react-query'
 
 import { Board } from '../pages/Board'
-const client = new QueryClient()
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+})
 
 
 export function AppRoutes() {

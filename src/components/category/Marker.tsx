@@ -7,7 +7,7 @@ interface MarkerProps {
 }
 
 
-export function Marker({title, color}: MarkerProps) {
+export function Marker({title}: MarkerProps) {
   const checkColor = () => {
     if(title === 'To do') {
       return 'bg-[#0080FE]'

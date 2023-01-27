@@ -1,21 +1,13 @@
 import { Trash } from "phosphor-react"
-import { useState } from "react"
+import { TaskComponentType } from "../../types/components"
 import { Text } from "../Text"
 import { CheckButton } from "./Check"
 
-
-interface TaskProps {
-  task: string
-  isCritical: boolean
-  isDone: boolean
-  setIsDone: Function
-}
-
-
-export function Task({task, isCritical, isDone, setIsDone}: TaskProps) {
+export function Task({task, isCritical, isDone, setIsDone, provided}: TaskComponentType) {
+  console.log()
 
   return (
-    <div className="flex flex-col justify-center p-1 m-2 bg-my-gray-200 rounded-lg">
+    <div {...provided?.dragHandleProps} {...provided?.draggableProps} ref={provided?.innerRef} className="flex flex-col justify-center p-1 m-2 bg-my-gray-200 rounded-lg">
       <div className="flex items-center gap-2 ml-1">
         <CheckButton setIsDone={setIsDone} isDone={isDone}/>
         {task}
