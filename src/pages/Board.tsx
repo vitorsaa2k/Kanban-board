@@ -53,7 +53,7 @@ export function Board() {
 
   const markers = categorys?.map((marker: MarkerType) => {
     return (
-        <div className="max-w-[322px]">
+        <div className="self-start max-w-[322px]">
           <Marker color={marker.color} title={marker.title!}/>
           <div>
             <div>
