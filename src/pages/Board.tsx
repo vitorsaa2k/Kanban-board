@@ -20,24 +20,35 @@ export function Board() {
     setCategorys(data)
   }, [data])
 
-  function sendBoard(result: DropResult) {
+  async function sendBoard(result: DropResult) {
     if (!result.destination) return
     console.log(result)
     if (result.destination.droppableId === result.source.droppableId && result.destination.index === result.source.index) return 
+
     let destination = {...categorys!.filter((user) => user.title === result.destination!.droppableId)}
-    console.log(destination)
     let destinationIndex = categorys!.indexOf(destination[0])
+
     let source = {...categorys!.filter((user) => user.title === result.source.droppableId)}
     let sourceIndex = categorys!.indexOf(source[0])
+
     let user = categorys!
-    user[destinationIndex].tasks = [...user[destinationIndex].tasks, source[0].tasks[result.source.index]] /* .splice(result.destination.index, 0, destination[0].tasks[result.source.index]) */
-    user[sourceIndex].tasks.splice(result.source.index , 1)
+
+    if(result.destination.droppableId === result.source.droppableId) {
+      let dest = {...source[0].tasks[result.source.index]}
+      let sour = {...destination[0].tasks[result.destination.index]}
+      user[destinationIndex].tasks[result.destination.index] = dest
+      user[sourceIndex].tasks[result.source.index] = sour
+
+    } else {
+      user[destinationIndex].tasks.splice(result.destination.index, 0, source[0].tasks[result.source.index])
+      user[sourceIndex].tasks.splice(result.source.index, 1)
+    }
+
     setCategorys(user)
     updateBoard(result).then((res) => {
       console.log(res)
       refetch()
-    })
-    console.log(categorys) 
+    }) 
   }
 
   const markers = categorys?.map((marker: MarkerType) => {
