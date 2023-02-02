@@ -7,10 +7,10 @@ export function Task({task, isCritical, isDone, setIsDone, provided}: TaskCompon
   console.log()
 
   return (
-    <div {...provided?.dragHandleProps} {...provided?.draggableProps} ref={provided?.innerRef} className={`flex relative ${isCritical ? 'flex-col' : ''} justify-between p-1 m-2 bg-my-gray-200 rounded-lg`}>
+    <div {...provided?.dragHandleProps} {...provided?.draggableProps} ref={provided?.innerRef} className={`flex ${isCritical ? 'flex-col' : ''} justify-between p-1 m-2 bg-my-gray-200 rounded-lg shadow-taskShadow`}>
       <div className="flex items-center gap-2 ml-1">
         <CheckButton setIsDone={setIsDone} isDone={isDone}/>
-        {task}
+          {task}
       </div>
         {
           isCritical ? (

@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      boxShadow: {
+        taskShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        check: "0px 1px 2px 2px rgba(0, 0, 0, 0.10)"
+      },
       fontSize: {
         "my-sm": "1rem",
         "my-lg": "1.25rem",
