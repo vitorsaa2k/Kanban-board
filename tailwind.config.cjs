@@ -14,6 +14,8 @@ module.exports = {
         "my-gray-200": "#E6E6E6",
         "my-gray-800": "#404040",
         "my-gray-900": "#222222",
+        "my-red-200": "#FA9494",
+        "my-red-600": "#FE2828",
       }
     },
     fontFamily: {

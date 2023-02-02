@@ -7,21 +7,25 @@ export function Task({task, isCritical, isDone, setIsDone, provided}: TaskCompon
   console.log()
 
   return (
-    <div {...provided?.dragHandleProps} {...provided?.draggableProps} ref={provided?.innerRef} className="flex flex-col justify-center p-1 m-2 bg-my-gray-200 rounded-lg">
+    <div {...provided?.dragHandleProps} {...provided?.draggableProps} ref={provided?.innerRef} className={`flex relative ${isCritical ? 'flex-col' : ''} justify-between p-1 m-2 bg-my-gray-200 rounded-lg`}>
       <div className="flex items-center gap-2 ml-1">
         <CheckButton setIsDone={setIsDone} isDone={isDone}/>
         {task}
       </div>
-      <div className="flex justify-between">
         {
           isCritical ? (
-            <div>
-              <Text>Critical</Text>
+            <div className="flex m-1 items-center justify-between">
+              <div className="bg-my-red-200 border-[1px] px-3 h-[24px] border-my-red-600 rounded-lg flex justify-center items-center">
+                <Text className="text-my-red-600">Critical</Text>
+              </div>
+              <Trash className="hover:cursor-pointer" size={32}/>
             </div>
-          ) : null
+          ) : (
+            <div className="flex m-1 items-center">
+              <Trash className="hover:cursor-pointer" size={32}/>
+            </div>
+          )
         }
-        <Trash size={32}/>
-      </div>
     </div>
   )
 }
