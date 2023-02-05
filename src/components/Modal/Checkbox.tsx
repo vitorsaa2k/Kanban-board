@@ -1,11 +1,10 @@
 import { Text } from "../Text"
 import clsx from "clsx"
-import { useState } from "react"
 import { Check } from "phosphor-react"
 
 export function Checkbox({label, isChecked, handleClick}: {label: string, isChecked: boolean, handleClick: CallableFunction}) {
   return (
-    <label className="flex items-center m-2 gap-1">
+    <label className="flex items-center gap-1">
       {isChecked ? (
         <div  className="relative flex hover:cursor-pointer">
         <input onClick={() => {handleClick()}}
@@ -28,7 +27,7 @@ export function Checkbox({label, isChecked, handleClick}: {label: string, isChec
         ></input>
       )}
 
-      <Text className="text-white">{label}</Text>
+      <Text>{label}</Text>
     </label>
   )
 }

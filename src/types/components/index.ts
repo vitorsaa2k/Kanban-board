@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import { DraggableProvided } from "react-beautiful-dnd";
 
 export interface TaskComponentType {
@@ -6,4 +7,13 @@ export interface TaskComponentType {
   isDone: boolean;
   setIsDone: Function;
   provided?: DraggableProvided;
+}
+
+export interface ModalComponentType {
+  title: string;
+  description?: string;
+  comfirm: Function;
+  cancel: MouseEventHandler<HTMLDivElement>;
+  placeholder?: string;
+  isTask?: boolean;
 }
