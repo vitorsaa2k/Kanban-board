@@ -1,3 +1,4 @@
+import { FieldValues } from 'react-hook-form';
 import axios from "axios";
 import { DropResult } from "react-beautiful-dnd";
 
@@ -18,4 +19,8 @@ export async function getBoard() {
 
 export async function updateBoard(result: DropResult) {
   return await baseInstance.post('kanban/update', result).then(res => res.data)
+}
+
+export async function pushMarker(title: FieldValues) {
+  return await baseInstance.post('kanban/newMarker', title).then(res => res.data)
 }
