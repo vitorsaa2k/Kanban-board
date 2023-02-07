@@ -1,11 +1,5 @@
-import { Children, useState } from "react";
 import { createPortal } from "react-dom";
-import { useForm } from "react-hook-form";
 import { ModalComponentType } from "../../types/components";
-import { Input } from "../Input";
-import { Text } from "../Text";
-import { Button } from "./Button";
-import { Checkbox } from "./Checkbox";
 
 
 

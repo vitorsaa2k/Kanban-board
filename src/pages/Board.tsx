@@ -8,6 +8,7 @@ import { DragDropContext, DropResult} from 'react-beautiful-dnd'
 import { getBoard, updateBoard } from "../functions/axios";
 import { StrictModeDroppable as Droppable } from "../components/StrictModeDroppable";
 import { Loading } from "../components/Loading";
+import { NewMarkerButton } from "../components/NewMarkerButton";
 
 
 export function Board() {
@@ -80,7 +81,10 @@ export function Board() {
       <div>
         {isFetching && <Loading />}
         <Nav />
-        <div className="grid grid-cols-3 place-items-center gap-[10px] my-36">
+        <div className="flex justify-end m-8">
+          <NewMarkerButton refetch={refetch} />
+        </div>
+        <div className="grid grid-cols-3 place-items-center gap-[10px]">
         <DragDropContext onDragEnd={sendBoard}>
           {markers}
         </DragDropContext>
