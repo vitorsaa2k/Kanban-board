@@ -1,5 +1,6 @@
-export interface UserType extends MarkerType {
+export interface UserType {
   name: string;
+  board: MarkerType[]
 }
 
 export interface MarkerType {
