@@ -24,3 +24,7 @@ export async function updateBoard(result: DropResult) {
 export async function pushMarker(title: FieldValues) {
   return await baseInstance.post('kanban/newMarker', title).then(res => res.data)
 }
+
+export async function pushTask(data: FieldValues) {
+  return await baseInstance.post('kanban/newTask', data).then(res => res.data)
+}
