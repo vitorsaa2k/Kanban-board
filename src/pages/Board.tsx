@@ -17,45 +17,38 @@ export function Board() {
   const [categorys, setCategorys] = useState(data)
   console.log(categorys)
 
+
   useEffect(() => {
     setCategorys(data)
   }, [data])
 
   async function sendBoard(result: DropResult) {
     if (!result.destination) return
-    console.log(result)
     if (result.destination.droppableId === result.source.droppableId && result.destination.index === result.source.index) return 
 
-    let destination = {...categorys!.filter((user) => user.title === result.destination!.droppableId)}
-    let destinationIndex = categorys!.indexOf(destination[0])
+    let [destination] = categorys!.filter((user) => user.title === result.destination!.droppableId)
+    let destinationIndex = categorys!.indexOf(destination)
 
-    let source = {...categorys!.filter((user) => user.title === result.source.droppableId)}
-    let sourceIndex = categorys!.indexOf(source[0])
+    let [source] = categorys!.filter((user) => user.title === result.source.droppableId)
+    let sourceIndex = categorys!.indexOf(source)
 
     let user = categorys!
+    let objectInMovement = source.tasks[result.source.index]
 
-    if(result.destination.droppableId === result.source.droppableId) {
-      let dest = {...source[0].tasks[result.source.index]}
-      let sour = {...destination[0].tasks[result.destination.index]}
-      user[destinationIndex].tasks[result.destination.index] = dest
-      user[sourceIndex].tasks[result.source.index] = sour
+    user[sourceIndex].tasks.splice(result.source.index, 1)
+    user[destinationIndex].tasks.splice(result.destination.index, 0 , objectInMovement)
 
-    } else {
-      user[destinationIndex].tasks.splice(result.destination.index, 0, source[0].tasks[result.source.index])
-      user[sourceIndex].tasks.splice(result.source.index, 1)
-    }
 
     setCategorys(user)
     updateBoard(result).then((res) => {
-      console.log(res)
       refetch()
     }) 
   }
 
   const markers = categorys?.map((marker: MarkerType) => {
     return (
-        <div className="self-start max-w-[322px]">
-          <Marker color={marker.color} title={marker.title!}/>
+        <div key={marker.title} className="self-start max-w-[322px]">
+          <Marker refetch={refetch} color={marker.color} title={marker.title!}/>
           <div>
             <div>
                 <Droppable droppableId={marker.title!}>

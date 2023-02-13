@@ -30,7 +30,7 @@ function NewMarkerModal({cancel, refetch}: {cancel: Function, refetch: <TPageDat
   const {register, handleSubmit} = useForm()
 
   async function submitApi(data: FieldValues) {
-    console.log(data);
+    console.log(data)
     await pushMarker(data)
     refetch()
     cancel()
@@ -46,7 +46,7 @@ function NewMarkerModal({cancel, refetch}: {cancel: Function, refetch: <TPageDat
           <Input register={register} name='title' placeholder="Title"/>
 
           <div className="flex justify-end" >
-            <Button handleClick={cancel}>Cancel</Button>
+            <Button onClick={cancel}>Cancel</Button>
             <Button>Comfirm</Button>
           </div>
 

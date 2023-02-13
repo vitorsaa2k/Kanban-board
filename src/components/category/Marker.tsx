@@ -6,14 +6,16 @@ import Modal from '../Modal/Index';
 import { FieldValues, useForm } from "react-hook-form";
 import { Input } from "../Input";
 import { Checkbox } from "../Modal/Checkbox";
+import { pushTask } from "../../functions/axios";
 
 interface MarkerProps {
   title: string
   color?: string
+  refetch: <TPageData>() => {}
 }
 
 
-export function Marker({title}: MarkerProps) {
+export function Marker({title, refetch}: MarkerProps) {
   const checkColor = () => {
     if(title === 'To do') {
       return 'bg-[#0080FE]'
@@ -31,24 +33,25 @@ export function Marker({title}: MarkerProps) {
   return (
     <div className={`flex items-center justify-center relative rounded-lg w-[322px] h-[54px] ${checkColor()}`}>
       {
-        isShowing && <MarkerModal cancel={() => setIsShowing(false)} />
+        isShowing && <MarkerModal refetch={refetch} title={title} cancel={() => setIsShowing(false)} />
       }
       <Text size="lg" className="text-white self-center">{title}</Text>
       <div onClick={() => {setIsShowing(true)}} className="absolute right-4 hover:cursor-pointer">
         <Plus color="#FFF" size={32}/>
       </div>
-
     </div>
   )
 }
 
-function MarkerModal({cancel}: {cancel: Function}) {
+function MarkerModal({cancel, title, refetch}: {cancel: Function, title: string, refetch: <TPageData>() => {}}) {
 
   const {register, handleSubmit} = useForm()
   const [isChecked, setIsChecked] = useState(false)
 
-  function submitApi(data: FieldValues) {
-    console.log({...data, isCritical: isChecked})
+  async function submitApi(data: FieldValues) {
+    await pushTask({...data, isCritical: isChecked, title})
+    refetch()
+    cancel()
   }
 
   return (
@@ -63,7 +66,7 @@ function MarkerModal({cancel}: {cancel: Function}) {
           <Checkbox label="Set the task as critical" isChecked={isChecked} handleClick={() => setIsChecked(prev => !prev)} />
 
           <div className="flex justify-end" >
-            <Button handleClick={cancel}>Cancel</Button>
+            <Button onClick={() => cancel()}>Cancel</Button>
             <Button>Comfirm</Button>
           </div>
         </form>
