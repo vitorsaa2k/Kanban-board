@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { DraggableProvided } from "react-beautiful-dnd";
 
 export interface TaskComponentType {
@@ -10,6 +10,8 @@ export interface TaskComponentType {
 }
 
 export interface ModalComponentType {
-  cancel: MouseEventHandler<HTMLDivElement>;
+  cancel: Function;
   children: ReactNode;
 }
+
+export interface ButtonComponentType extends ButtonHTMLAttributes<HTMLButtonElement> {}
