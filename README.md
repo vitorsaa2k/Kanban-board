@@ -11,6 +11,10 @@ interact with the board using the DnD flow
 Create tasks and interact with them
 ![Creating tasks](https://user-images.githubusercontent.com/17365161/218163637-9a51ae55-34cb-437d-99ce-c42582a315ba.gif)
 
+## what is going to be added to the project?
+- User authentication using JWT
+- Integration with mongodb
+
 
 
 
